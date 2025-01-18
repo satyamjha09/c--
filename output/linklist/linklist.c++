@@ -43,6 +43,67 @@ class List {
             temp = temp -> next;
         }
     }
+
+    void pop_front() {
+        if(head == NULL){
+            cout << "LL is empty\n";
+        }
+
+        Node* temp = head;
+        head = head-> next;
+        temp-> next = NULL;
+
+        delete temp;
+    }
+
+    void push_back(int val) {
+        Node* newNode = new Node(val);
+
+        if(head == NULL){
+            head = tail = newNode;
+        } else {
+            tail -> next = newNode;
+            tail = newNode;
+        }
+
+
+    }
+
+    void insert(int val , int pos) {
+        if(pos < 0){
+            cout << "insert pos\n";
+            return;
+        }
+
+        if(pos == 0){
+            push_front(val);
+            return;
+        }
+        Node* temp = head;
+        for(int i = 0; i < pos - 1; i++){
+            temp = temp -> next;
+        }
+
+        Node* newNode = new Node(val);
+        newNode-> next = temp -> next;
+        temp-> next = newNode;
+    }
+
+    void pop_back() {
+        if(head == NULL){
+            cout << "LL is empty\n";
+            return;
+        }
+
+        Node* temp = head;
+        while(temp -> next != tail){
+            temp = temp -> next;
+        }
+
+        temp -> next = NULL;
+        delete tail;
+        tail = temp;
+    }
 };
 
 
@@ -57,6 +118,14 @@ int main() {
     ll.push_front(3);
 
     ll.printLL();
+
+    ll.push_back(34);
+    ll.push_back(44);
+
+    ll.pop_front();
+
+    ll.printLL();
+
 
 
 
