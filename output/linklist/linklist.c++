@@ -80,6 +80,7 @@ class List {
             return;
         }
         Node* temp = head;
+
         for(int i = 0; i < pos - 1; i++){
             temp = temp -> next;
         }
@@ -87,6 +88,21 @@ class List {
         Node* newNode = new Node(val);
         newNode-> next = temp -> next;
         temp-> next = newNode;
+    }
+
+    int Search(int val) {
+
+       Node* temp = head;
+       int pos = 0;
+
+       while(temp != NULL){
+            if(temp -> data == val){
+                return pos;
+            }
+
+            temp = temp -> next;
+            pos++;
+       }
     }
 
     void pop_back() {
@@ -97,6 +113,9 @@ class List {
 
         Node* temp = head;
         while(temp -> next != tail){
+            if(temp == NULL){
+                cout <<"invalid pos\n";
+            }
             temp = temp -> next;
         }
 
@@ -123,6 +142,8 @@ int main() {
     ll.push_back(44);
 
     ll.pop_front();
+
+    ll.insert(245 , 3);
 
     ll.printLL();
 
